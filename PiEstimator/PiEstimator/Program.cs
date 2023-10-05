@@ -29,7 +29,7 @@ namespace PiEstimator
             for (int i = 0; i < n; i++) // loops through n times and finds the closest number to pi
             {
                 double pi = rand.NextDouble() * 10;
-                Console.WriteLine(pi);
+                Console.WriteLine(pi); // isn't necessary to have but is useful for testing
                 if (Math.Abs(temp - Math.PI) > Math.Abs(pi - Math.PI)) // checks whether difference of random number is greater than previous number
                 {
                     temp = pi;
