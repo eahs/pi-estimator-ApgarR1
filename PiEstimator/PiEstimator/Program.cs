@@ -24,18 +24,21 @@ namespace PiEstimator
         static double EstimatePi(long n)
         {
             Random rand = new Random(System.Environment.TickCount);
-            double temp = 20; // initialized this to 20 so that the first random number is always closer to pi
+            double pi, x, y;
+            double count = 0;
 
-            for (int i = 0; i < n; i++) // loops through n times and finds the closest number to pi
+            for (int i = 0; i < n; i++)
             {
-                double pi = rand.NextDouble() * 10;
-                Console.WriteLine(pi); // isn't necessary to have but is useful for testing
-                if (Math.Abs(temp - Math.PI) > Math.Abs(pi - Math.PI)) // checks whether difference of random number is greater than previous number
-                {
-                    temp = pi;
-                }
+                x = rand.NextDouble();
+                y = rand.NextDouble();
+
+                if (Math.Sqrt(x * x + y * y) <= 1) // checks whether point is inside circle
+                    count++;
             }
-            return temp;
+
+            pi = 4 * (count / n);
+
+            return pi;
         }
 
         static long GetNumber(string prompt)
